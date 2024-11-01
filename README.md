@@ -2,7 +2,7 @@
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/prebid/Prebid.js.svg)](https://isitmaintained.com/project/prebid/Prebid.js "Percentage of issues still open")
 [![Coverage Status](https://coveralls.io/repos/github/prebid/Prebid.js/badge.svg)](https://coveralls.io/github/prebid/Prebid.js)
 
-# Prebid.js
+# cary.js
 
 > A free and open source library for publishers to quickly implement header bidding.
 
@@ -133,73 +133,7 @@ To build the project on your local machine we recommend, running:
 
     $ gulp serve-and-test --file <spec_file.js>
 
-This will run testing but not linting. A web server will start at `http://localhost:9999` serving from the project root and generates the following files:
-
-+ `./build/dev/prebid.js` - Full source code for dev and debug
-+ `./build/dev/prebid.js.map` - Source map for dev and debug
-+ `./build/dev/prebid-core.js`
-+ `./build/dev/prebid-core.js.map`
-
-
-Development may be a bit slower but if you prefer linting and additional watch files you can also still run just:
-
-    $ gulp serve 
-
-
-### Build Optimization
-
-The standard build output contains all the available modules from within the `modules` folder.  Note, however that there are bid adapters which support multiple bidders through aliases, so if you don't see a file in modules for a bid adapter, you may need to grep the repository to find the name of the module you need to include.
-
-You might want to exclude some/most of them from the final bundle.  To make sure the build only includes the modules you want, you can specify the modules to be included with the `--modules` CLI argument.
-
-For example, when running the serve command: `gulp serve --modules=openxBidAdapter,rubiconBidAdapter,sovrnBidAdapter`
-
-Building with just these adapters will result in a smaller bundle which should allow your pages to load faster.
-
-**Build standalone prebid.js**
-
-- Clone the repo, run `npm ci`
-- Then run the build:
-
-        $ gulp build --modules=openxBidAdapter,rubiconBidAdapter,sovrnBidAdapter
-        
-Alternatively, a `.json` file can be specified that contains a list of modules you would like to include.
-
-    $ gulp build --modules=modules.json
-        
-With `modules.json` containing the following
-```json modules.json
-[
-  "openxBidAdapter",
-  "rubiconBidAdapter",
-  "sovrnBidAdapter"
-]
-```
-
-**Build prebid.js using npm for bundling**
-
-In case you'd like to explicitly show that your project uses `prebid.js` and want a reproducible build, consider adding it as an `npm` dependency.
-
-- Add `prebid.js` as a `npm` dependency of your project: `npm install prebid.js`
-- Run the `prebid.js` build under the `node_modules/prebid.js/` folder
-
-        $ gulp build --modules=path/to/your/list-of-modules.json
-
-Most likely your custom `prebid.js` will only change when there's:
-
-- A change in your list of modules
-- A new release of `prebid.js`
-
-Having said that, you are probably safe to check your custom bundle into your project.  You can also generate it in your build process.
-
-**Build once, bundle multiple times**
-
-If you need to generate multiple distinct bundles from the same Prebid version, you can reuse a single build with:
-
-```
-gulp build
-gulp bundle --tag one --modules=one.json
-gulp bundle --tag two --modules=two.json
+This、
 ```
 
 This generates slightly larger files, but has the advantage of being much faster to run (after the initial `gulp build`). It's also the method used by [the Prebid.org download page](https://docs.prebid.org/download.html).  
